@@ -1,0 +1,80 @@
+.form {
+  input[type="text"],
+    input[type="password"] {
+      outline: none;
+      font-family: Roboto, sans-serif;
+      color: white;
+      font-size: 48px;
+      background: none;
+      border: 0 none;
+      padding-left: 0;
+      border-bottom: 5px solid rgba(255, 255, 255, 0.5);
+  
+      &:hover,
+      &:focus {
+        background: none;
+        color: white;
+        border-color: rgba(255, 255, 255, 1);
+      }
+    }
+  
+  
+    input[type="password"] {
+      letter-spacing: 3px;
+    }
+  
+    &__input-container {
+      position: relative;
+    }
+  
+    &__show-password {
+      position: absolute;
+      right: 20px;
+      top: 28px;
+      color: white;
+      opacity: 0.5;
+      cursor: pointer;
+  
+      &:hover,
+      &:focus {
+        opacity: 1;
+      }
+    }
+  
+    svg {
+      transform: scale(1.5);
+      fill: currentColor;
+    }
+
+    &__progress {
+      height: 3px !important;
+    }
+}
+
+.progress-bar-danger {
+  background-color: #e90f10;
+}
+
+.progress-bar-warning {
+  background-color: #ffad00;
+}
+
+.progress-bar-success {
+  background-color: #02b502;
+}
+
+.red {
+  background-color: red;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.green {
+  background-color: green;
+}
+
+.gray {
+  color: gray;
+}
