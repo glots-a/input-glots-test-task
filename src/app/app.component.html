@@ -1,9 +1,20 @@
 <form class="form">
   <label>
     <div class="form__input-container">
-      <input id="password" name="password" class="form__input" type="password" [type]="inputState ? 'text' : 'password'"
-        placeholder="Enter your password" [(ngModel)]="password" (input)="checkPasswordStrength()">
-      <span (click)="toggle()" class="form__show-password" id="show-password">
+      <input 
+        id="password" 
+        name="password"
+        class="form__input"
+        type="password"
+        [type]="inputState ? 'text' : 'password'"
+        placeholder="Enter your password" [(ngModel)]="password"
+        (input)="checkPasswordStrength()"
+      >
+      <span
+        (click)="toggle()"
+        class="form__show-password"
+        id="show-password"
+      >
         <svg width="18" height="" viewBox="0 0 30 30" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
           xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -26,25 +37,37 @@
     </div>
   </label>
 
-  <div id="popover-password" class="form__popover-password">
+  <div
+    id="popover-password"
+    class="form__popover-password"
+  >
     <p class="form__password-strength">
-      <span id="result" [ngClass]="{
+      <span
+        id="result"
+        [ngClass]="{
         'gray': passwordStrength === '',
         'red': passwordStrength === 'Weak',
         'yellow': passwordStrength === 'Medium',
         'green': passwordStrength === 'Strong'
-      }">
+        }"
+      >
         {{ passwordStrength }}
       </span>
     </p>
 
     <div class="form__progress">
-      <div id="password-strength" class="progress-bar" role="progressbar" [ngClass]="{
+      <div
+        id="password-strength"
+        class="progress-bar"
+        role="progressbar"
+        [ngClass]="{
           'gray': passwordStrength === '',
           'red': passwordStrength === 'Weak',
           'yellow': passwordStrength === 'Medium',
           'green': passwordStrength === 'Strong'
-        }" [style.width.%]="passwordStrengthPercentage"></div>
+        }"
+        [style.width.%]="passwordStrengthPercentage"
+      ></div>
     </div>
     <ul class="list-unstyled">
       <li>
@@ -57,24 +80,23 @@
           &nbsp;Only (0-9) or (a-z) or (!@#$%^&*)
         </span>
       </li>
+
       <li>
         <span class="form__rule" [ngClass]="{
-            'gray': passwordStrength === '',
-            'red': passwordStrength === 'Weak',
+            'gray': passwordStrength === '' || passwordStrength === 'Weak',
             'yellow': passwordStrength === 'Medium',
             'green': passwordStrength === 'Strong'
           }">
           &nbsp;Combination of (Aa-Zz)-(!@#$%^&*) or (a-z)-(0-9) or (0-9)-(!@#$%^&*)
         </span>
       </li>
+      
       <li>
         <span class="form__rule" [ngClass]="{
-            'gray': passwordStrength === '',
-            'red': passwordStrength === 'Weak',
-            'yellow': passwordStrength === 'Medium',
+            'gray': passwordStrength === '' || passwordStrength === 'Weak' ||  passwordStrength === 'Medium',
             'green': passwordStrength === 'Strong'
           }">
-          &nbsp;Has (a-z), (!@#$%^&*), (0-9)
+          &nbsp;Has (Aa-Zz), (!@#$%^&*), (0-9)
         </span>
       </li>
     </ul>
