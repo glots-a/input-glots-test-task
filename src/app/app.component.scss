@@ -1,10 +1,11 @@
 .form {
-  input[type="text"],
-    input[type="password"] {
+  padding: 8px;
+  &__input {
       outline: none;
       font-family: Roboto, sans-serif;
       color: white;
       font-size: 48px;
+      height: 64px;
       background: none;
       border: 0 none;
       padding-left: 0;
@@ -18,11 +19,7 @@
       }
     }
 
-    input[type="password"] {
-      letter-spacing: 3px;
-    }
-  
-    &__input-container {
+     &__input-container {
       position: relative;
     }
   
@@ -59,6 +56,13 @@
       top: -24px;
     }
 
+}
+
+@media (max-width: 640px) {
+  .form__input {
+    font-size: 24px;
+    width: 100%;
+  }
 }
 
 .red {
