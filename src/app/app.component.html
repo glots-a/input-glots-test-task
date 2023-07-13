@@ -1,9 +1,9 @@
 <form class="form">
   <label>
     <div class="form__input-container">
-      <input id="password" name="password" class="form__input" type="password" placeholder="Enter your password"
-        [(ngModel)]="password" (input)="checkPasswordStrength()">
-      <span class="form__show-password" id="show-password">
+      <input id="password" name="password" class="form__input" type="password" [type]="inputState ? 'text' : 'password'"
+        placeholder="Enter your password" [(ngModel)]="password" (input)="checkPasswordStrength()">
+      <span (click)="toggle()" class="form__show-password" id="show-password">
         <svg width="18" height="" viewBox="0 0 30 30" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
           xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -26,42 +26,57 @@
     </div>
   </label>
 
-<div class="col-md-12">
-  <div id="popover-password">
-    <p><span id="result">{{ passwordStrength }}</span></p>
+  <div id="popover-password" class="form__popover-password">
+    <p class="form__password-strength">
+      <span id="result" [ngClass]="{
+        'gray': passwordStrength === '',
+        'red': passwordStrength === 'Weak',
+        'yellow': passwordStrength === 'Medium',
+        'green': passwordStrength === 'Strong'
+      }">
+        {{ passwordStrength }}
+      </span>
+    </p>
+
     <div class="form__progress">
-      <div id="password-strength" class="progress-bar" role="progressbar"
-        [ngClass]="{'red': password.length < 8, 'yellow': passwordStrength === 'Medium', 'green': passwordStrength === 'Strong'}"
-        [style.width.%]="passwordStrengthPercentage">
-      </div>
+      <div id="password-strength" class="progress-bar" role="progressbar" [ngClass]="{
+          'gray': passwordStrength === '',
+          'red': passwordStrength === 'Weak',
+          'yellow': passwordStrength === 'Medium',
+          'green': passwordStrength === 'Strong'
+        }" [style.width.%]="passwordStrengthPercentage"></div>
     </div>
     <ul class="list-unstyled">
       <li>
-        <span class="low-upper-case" [ngClass]="{'gray': passwordStrength !== 'Weak'}">
-          <i class="fas fa-circle" aria-hidden="true"></i>
-          &nbsp;Lowercase &amp; Uppercase
+        <span class="form__rule" [ngClass]="{
+            'gray': passwordStrength === '',
+            'red': passwordStrength === 'Weak',
+            'yellow': passwordStrength === 'Medium',
+            'green': passwordStrength === 'Strong'
+          }">
+          &nbsp;Only (0-9) or (a-z) or (!@#$%^&*)
         </span>
       </li>
       <li>
-        <span class="one-number" [ngClass]="{'gray': passwordStrength !== 'Weak' && passwordStrength !== 'Medium'}">
-          <i class="fas fa-circle" aria-hidden="true"></i>
-          &nbsp;Number (0-9)
+        <span class="form__rule" [ngClass]="{
+            'gray': passwordStrength === '',
+            'red': passwordStrength === 'Weak',
+            'yellow': passwordStrength === 'Medium',
+            'green': passwordStrength === 'Strong'
+          }">
+          &nbsp;Combination of (Aa-Zz)-(!@#$%^&*) or (a-z)-(0-9) or (0-9)-(!@#$%^&*)
         </span>
       </li>
       <li>
-        <span class="one-special-char"
-          [ngClass]="{'gray': passwordStrength !== 'Weak' && passwordStrength !== 'Medium'}">
-          <i class="fas fa-circle" aria-hidden="true"></i>
-          &nbsp;Special Character (!@#$%^&*)
-        </span>
-      </li>
-      <li>
-        <span class="eight-character" [ngClass]="{'gray': passwordStrength !== 'Weak'}">
-          <i class="fas fa-circle" aria-hidden="true"></i>
-          &nbsp;Atleast 8 Character
+        <span class="form__rule" [ngClass]="{
+            'gray': passwordStrength === '',
+            'red': passwordStrength === 'Weak',
+            'yellow': passwordStrength === 'Medium',
+            'green': passwordStrength === 'Strong'
+          }">
+          &nbsp;Has (a-z), (!@#$%^&*), (0-9)
         </span>
       </li>
     </ul>
   </div>
-</div>
 </form>

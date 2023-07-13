@@ -17,8 +17,7 @@
         border-color: rgba(255, 255, 255, 1);
       }
     }
-  
-  
+
     input[type="password"] {
       letter-spacing: 3px;
     }
@@ -49,30 +48,29 @@
     &__progress {
       height: 3px !important;
     }
-}
 
-.progress-bar-danger {
-  background-color: #e90f10;
-}
+    &__popover-password {
+      position: relative;
+      margin-top: 16px;
+    }
 
-.progress-bar-warning {
-  background-color: #ffad00;
-}
+    &__password-strength {
+      position: absolute;
+      top: -24px;
+    }
 
-.progress-bar-success {
-  background-color: #02b502;
 }
 
 .red {
-  background-color: red;
+ color: red;
 }
 
 .yellow {
-  background-color: yellow;
+  color: yellow;
 }
 
 .green {
-  background-color: green;
+ color: green;
 }
 
 .gray {
